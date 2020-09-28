@@ -84,9 +84,13 @@ typedef struct _IPT_INPUT_BUFFER
         {
             ULONG64 ProcessHandle;
         } QueryProcessIptTrace;
+        struct
+        {
+            ULONGLONG Unknown[4];
+        } ForceStructSizeOn2004AndHigher; // TODO: FIXME
     };
 } IPT_INPUT_BUFFER, *PIPT_INPUT_BUFFER;
-C_ASSERT(sizeof(IPT_INPUT_BUFFER) == 0x28);
+C_ASSERT(sizeof(IPT_INPUT_BUFFER) == 0x30);
 
 //
 // IOCTL Output Request Buffer
@@ -128,9 +132,13 @@ typedef struct _IPT_OUTPUT_BUFFER
         {
             IPT_OPTIONS Options;
         } QueryCoreTrace;
+        struct
+        {
+            ULONGLONG Unknown[3];
+        } ForceStructSizeOn2004AndHigher; // TODO: FIXME
     };
 } IPT_OUTPUT_BUFFER, *PIPT_OUTPUT_BUFFER;
-C_ASSERT(sizeof(IPT_OUTPUT_BUFFER) == 0x10);
+C_ASSERT(sizeof(IPT_OUTPUT_BUFFER) == 0x18);
 
 //
 // IOCTLs that the IPT Driver Handles
